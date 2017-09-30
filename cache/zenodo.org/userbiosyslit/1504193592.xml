@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?xml-stylesheet type="text/xsl" href="/static/xsl/oai2.v1.0.xsl"?>
+<OAI-PMH xmlns="http://www.openarchives.org/OAI/2.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/ http://www.openarchives.org/OAI/2.0/OAI-PMH.xsd">
+  <responseDate>2017-08-31T15:33:12Z</responseDate>
+  <request from_="2013-01-01T00:00:00Z" verb="ListIdentifiers" set="user-biosyslit" metadataPrefix="oai_dc" until="2014-01-01T00:00:00Z">https://zenodo.org/oai2d</request>
+  <ListIdentifiers/>
+</OAI-PMH>
