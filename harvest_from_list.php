@@ -8,11 +8,11 @@ require_once (dirname(__FILE__) . '/couchsimple.php');
 
 
 $filename = 'ids.txt';
-$filename = 'ids-subset.txt';
-//$filename = 'test.txt';
 $file_handle = fopen($filename, "r");
 
 $count = 1;
+
+$replicate = array();
 
 while (!feof($file_handle)) 
 {
@@ -47,6 +47,8 @@ while (!feof($file_handle))
 	
 			// store
 			$couch->add_update_or_delete_document($doc, $doc->_id, 'add');
+			
+			$replicate[] = $doc->_id;
 		}
 
 		// Give server a break every 10 items
@@ -56,8 +58,51 @@ while (!feof($file_handle))
 			echo "\n...sleeping for " . round(($rand / 1000000),2) . ' seconds' . "\n\n";
 			usleep($rand);
 		}
+		
+		// replicate to cloud
+		if (count($replicate) >= 10)
+		{
+			$doc = new stdclass;
+
+			$doc->source = "zenodo";
+			$doc->target = "https://4c577ff8-0f3d-4292-9624-41c1693c433b-bluemix:6727bfccd5ac5213a9a05f87e5161c153131af6b2c0f3355fe1aa0fe2f97a35f@4c577ff8-0f3d-4292-9624-41c1693c433b-bluemix.cloudant.com/zenodo";
+			$doc->doc_ids = $replicate;
+
+			print_r($doc);
+
+
+			$command = "curl http://localhost:5984/_replicate -H 'Content-Type: application/json' -d '" . json_encode($doc) . "'";
+
+			echo $command . "\n";
+			system($command);
+			
+			$replicate = array();
+
+		}				
+		
 	}			
 }	
+
+if (count($replicate) > 0)
+{
+	$doc = new stdclass;
+
+	$doc->source = "zenodo";
+	$doc->target = "https://4c577ff8-0f3d-4292-9624-41c1693c433b-bluemix:6727bfccd5ac5213a9a05f87e5161c153131af6b2c0f3355fe1aa0fe2f97a35f@4c577ff8-0f3d-4292-9624-41c1693c433b-bluemix.cloudant.com/zenodo";
+	$doc->doc_ids = $replicate;
+
+	print_r($doc);
+
+
+	$command = "curl http://localhost:5984/_replicate -H 'Content-Type: application/json' -d '" . json_encode($doc) . "'";
+
+	echo $command . "\n";
+	system($command);
+	
+	$replicate = array();
+
+}				
+
 
 
 
