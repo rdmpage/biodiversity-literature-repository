@@ -7,6 +7,7 @@ require_once (dirname(__FILE__) . '/couchsimple.php');
 
 $ids = array(322659, 439633, 439634, 439635);
 
+$ids=array(188000);
 
 
 $count = 1;

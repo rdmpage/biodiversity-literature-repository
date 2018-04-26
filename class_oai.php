@@ -204,7 +204,7 @@ class OaiHarvester
 			}
 			*/
 		
-			echo $url . "\n";
+			// echo $url . "\n";
 			
 			// make call, harvest XML, clean, store in database
 			
@@ -232,7 +232,7 @@ class OaiHarvester
 				$this->resumption_token = '';
 			}
 			
-			echo "-- Resumption token = " . $this->resumption_token . "\n";
+			// echo "-- Resumption token = " . $this->resumption_token . "\n";
 			
 		} while ($this->resumption_token != '');
 		
