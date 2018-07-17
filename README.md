@@ -20,7 +20,7 @@ http://exeg5le.cloudimg.io/s/height/200/https://zenodo.org/record/179078/files/f
 
 ## Cloudant
 
-curl http://localhost:5984/_replicate -H 'Content-Type: application/json' -d '{ "source": "zenodo”, "target": "https://rdmpage:<password>@rdmpage.cloudant.com/zenodo"}'
+curl http://localhost:5984/_replicate -H 'Content-Type: application/json' -d '{ "source": "zenodo", "target": "https://<username>:<password>@4c577ff8-0f3d-4292-9624-41c1693c433b-bluemix.cloudant.com/zenodo"}'
 
 
 ## Ideas
