@@ -60,7 +60,8 @@ while (!feof($file_handle))
 		}
 		
 		// replicate to cloud
-		if (count($replicate) >= 10)
+		//if (count($replicate) >= 10)
+		if (0)
 		{
 			$doc = new stdclass;
 
@@ -83,7 +84,8 @@ while (!feof($file_handle))
 	}			
 }	
 
-if (count($replicate) > 0)
+//if (count($replicate) > 0)
+if (0)
 {
 	$doc = new stdclass;
 

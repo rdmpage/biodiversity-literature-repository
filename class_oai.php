@@ -182,7 +182,8 @@ class OaiHarvester
 				//$url .= '&from=2017-01-01';
 				//$url .= '&until=2017-07-01';
 
-				$url .= '&from=2017-01-01';
+				$url .= '&from=2018-12-01';
+				
 	//			$url .= '&until=2016-01-01';
 				
 				
